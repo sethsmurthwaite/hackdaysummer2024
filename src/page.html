@@ -7,9 +7,9 @@
 </head>
 <body>
 
-<button hx-swap="outerHTML" hx-target="#nextButton">press me</button>
-<br>
-<button id="nextButton">you pressed me</button>
+<button hx-get="http://localhost:3000/test" hx-swap="innerHTML" hx-target="#test">press me</button>
+
+<div id="test"></div>
 
 </body>
 </html>

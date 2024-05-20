@@ -1,21 +1,18 @@
-import fastify from 'fastify';
+import express from "express";
 
-const app = fastify({ logger: true });
+const app = express();
+const port = 3000;
 
-app.get('/', async (request, reply) => {
-    console.log(request.method);
-    console.log(reply);
-    return { hello: 'world' };
+app.get('/', (req, res) => {
+    console.log(req.method);
+    res.json({ hello: 'world' });
 });
 
-const start = async () => {
-    try {
-        await app.listen(3000);
-        console.log('Server is running on http://localhost:3000');
-    } catch (err) {
-        app.log.error(err);
-        process.exit(1);
-    }
-};
+app.get('/test', (_req, res) => {
+    console.log('hello there')
+    res.json({ hello: 'world' });
+});
 
-start();
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
